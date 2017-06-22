@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="com.example.karthika.diary.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/heading"
+        android:textColor="@color/textColor"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textColor="@color/textColor"
+            android:textSize="18dp"
+            android:id="@+id/tx2"
+            android:layout_alignParentLeft="true"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tx2"
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:textColor="@color/textColor"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open"
+            style="?android:textAppearanceSmall"
+            android:textStyle="bold"
+            android:layout_below="@+id/password"
+            android:layout_marginTop="35dp"
+            android:id="@+id/open"
+            android:background="@drawable/button_selecter"
+            android:textColor="@color/textColor"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            style="?android:textAppearanceSmall"
+            android:textStyle="bold"
+            android:layout_below="@+id/open"
+            android:layout_marginTop="35dp"
+            android:id="@+id/setpassword"
+            android:background="@drawable/button_selecter"
+            android:textColor="@color/textColor"
+            android:onClick="setpassword"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

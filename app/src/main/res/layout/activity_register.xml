@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.karthika.diary.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/heading"
+        android:textColor="@color/textColor"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/prepass"
+            android:textColor="@color/textColor"
+            android:textSize="18dp"
+            android:id="@+id/tx1"
+            android:layout_alignParentLeft="true"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tx1"
+            android:textColor="@color/textColor"
+            android:id="@+id/previous_pass"
+            android:inputType="numberPassword"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/newpass"
+            android:textColor="@color/textColor"
+            android:textSize="18dp"
+            android:id="@+id/tx2"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/previous_pass"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp">
+
+        </TextView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tx2"
+            android:textColor="@color/textColor"
+            android:id="@+id/new_pass"
+            android:inputType="numberPassword"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            style="?android:textAppearanceSmall"
+            android:textColor="@color/textColor"
+            android:id="@+id/set_new_password"
+            android:layout_below="@+id/new_pass"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_selecter"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/setlang"
+            android:textColor="@color/textColor"
+            android:id="@+id/tx3"
+            android:textSize="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/set_new_password"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp">
+
+        </TextView>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/lang"
+            android:layout_below="@+id/tx3"></Spinner>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/set"
+            style="?android:textAppearanceSmall"
+            android:textColor="@color/textColor"
+            android:id="@+id/setlang"
+            android:layout_below="@+id/lang"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_selecter"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>
