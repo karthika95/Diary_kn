@@ -4,11 +4,18 @@ package com.example.karthika.diary;
  * Created by Karthika on 17-05-2017.
  */
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,15 +28,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.Locale;
 
 public class MainActivity  extends AppCompatActivity {
     EditText Pass,new_pass,pre_pass;
     Button open,set,set_new_pass,btnSubmit;
     AlertDialog.Builder builder;
-    static String saved_pass="";
     Spinner spinner;
     Locale myLocale;
+    public static final int PERMISSION_REQUEST_CODE=1;
+    public static final String FILE_DIR = "diaryContent";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +47,21 @@ public class MainActivity  extends AppCompatActivity {
         open = (Button) findViewById(R.id.open);
         set = (Button) findViewById(R.id.setpassword);
 
+        if(Build.VERSION.SDK_INT>=23) {
+            if (checkPermission())
+            {
 
+            } else{
+                requestPermission();
+            }
+        }
+        else
+        {
+            File f = new File(Environment.getExternalStorageDirectory(),FILE_DIR);
+            if(!f.exists()){
+                f.mkdirs();
+            }
+        }
         open.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +86,25 @@ public class MainActivity  extends AppCompatActivity {
             }
         });
     }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if(result == PackageManager.PERMISSION_GRANTED){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private void requestPermission() {
+        if(ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+
+        }
+        else {
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_REQUEST_CODE);
+        }
+    }
+
     public void setpassword(View view){
         setContentView(R.layout.activity_register);
         pre_pass = (EditText)findViewById(R.id.previous_pass);
@@ -112,12 +154,9 @@ public class MainActivity  extends AppCompatActivity {
 
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
-
             @Override
-            public void onClick(View v) {
-
-
-
+            public void onClick(View v)
+            {
                 String language = String.valueOf(spinner.getSelectedItem());
                 if(language.equals("Kannada")){
                     setLocale("kn");}
@@ -125,8 +164,6 @@ public class MainActivity  extends AppCompatActivity {
                     setLocale("");
                 }
             }
-
-
         });
 
     }
@@ -141,6 +178,7 @@ public class MainActivity  extends AppCompatActivity {
 
 
         // do your work here
+
         Intent refresh = new Intent(this, MainActivity.class);
         startActivity(refresh);
 
@@ -160,14 +198,6 @@ public class MainActivity  extends AppCompatActivity {
 
         pref.putString("password", password);
         pref.commit();
-    }
-
-    public void password()
-    {
-        Toast.makeText(getBaseContext(),"new password saved",Toast.LENGTH_LONG).show();
-        //setContentView(R.layout.activity_main);
-        startActivity(new Intent(MainActivity.this, CalendarActivity.class));
-        // }
     }
 
 }

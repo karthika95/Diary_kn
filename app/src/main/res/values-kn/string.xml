@@ -15,7 +15,8 @@
     <string name="speak">ಈಗ ಮಾತನಾಡಿ</string>
     <string name="english">ಇಂಗ್ಲಿಷ್</string>
     <string name="kannada">ಕನ್ನಡ</string>
-
+    <string name="saved">ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="selected">ಆಯ್ಕೆ</string>
     <string-array name="language_arrays">
         <item>ಇಂಗ್ಲಿಷ್</item>
         <item>ಕನ್ನಡ</item>

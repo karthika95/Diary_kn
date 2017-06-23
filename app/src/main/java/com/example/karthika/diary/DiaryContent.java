@@ -62,7 +62,7 @@ public class DiaryContent extends AppCompatActivity implements TextToSpeech.OnIn
                 String selectedItemText = (String) parent.getItemAtPosition(position);
                 // Notify the selected item text
                 Toast.makeText
-                        (getApplicationContext(), R.string.selected+":" + selectedItemText, Toast.LENGTH_SHORT)
+                        (getApplicationContext(), selectedItemText, Toast.LENGTH_SHORT)
                         .show();
                 language = selectedItemText;
             }
@@ -72,7 +72,6 @@ public class DiaryContent extends AppCompatActivity implements TextToSpeech.OnIn
 
             }
         });
-
 
 
         Bundle dateData = getIntent().getExtras();
@@ -104,7 +103,6 @@ public class DiaryContent extends AppCompatActivity implements TextToSpeech.OnIn
             }
         });
 
-        //String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         String currentDateTimeString = DateFormat.getTimeInstance().format(new Date());
 
 // textView is the TextView view that should display it
@@ -141,11 +139,12 @@ public class DiaryContent extends AppCompatActivity implements TextToSpeech.OnIn
         if ((requestCode == RQS_RECOGNITION) && (resultCode == RESULT_OK)) {
             ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
-
-            if (language.equals("English")) {
+            String eng = getString(R.string.english);
+            String kan = getString(R.string.kannada);
+            if (language.equals(eng)) {
                 editText.append(result.get(0));
                 editText.append(" ");
-            } else if (language.equals("Kannada")) {
+            } else if (language.equals(kan)) {
 
 
                 String[] words = result.get(0).split(" ");
@@ -162,12 +161,7 @@ public class DiaryContent extends AppCompatActivity implements TextToSpeech.OnIn
                     }
                     cursor.close();
                 }
-
-
             }
-
-
-
         }
     }
 

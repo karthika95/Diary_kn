@@ -65,10 +65,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return instance;
     }
 
-    public SQLiteDatabase getDatabase() {
-        return sqliteDb;
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -128,34 +124,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + databaseName;
     }
 
-    public static Cursor rawQuery(String query) {
-        try {
-            if (sqliteDb.isOpen()) {
-                sqliteDb.close();
-            }
-            sqliteDb = instance.getWritableDatabase();
-
-            cursor = null;
-            cursor = sqliteDb.rawQuery(query, null);
-        } catch (Exception e) {
-            System.out.println("DB ERROR  " + e.getMessage());
-            e.printStackTrace();
-        }
-        return cursor;
-    }
-
-    public static void execute(String query) {
-        try {
-            if (sqliteDb.isOpen()) {
-                sqliteDb.close();
-            }
-            sqliteDb = instance.getWritableDatabase();
-            sqliteDb.execSQL(query);
-        } catch (Exception e) {
-            System.out.println("DB ERROR  " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 
     public static Cursor translate(String result){
         try {

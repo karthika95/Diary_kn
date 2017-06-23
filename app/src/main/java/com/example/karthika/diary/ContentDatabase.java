@@ -68,19 +68,10 @@ public class ContentDatabase extends SQLiteOpenHelper {
     public void addData(String date, String content, SQLiteDatabase db) {
 
         ContentValues contentValues = new ContentValues();
-        //contentValues.put(COL1,date);
         contentValues.put(COL2, content);
         db.update(TABLE_NAME, contentValues, COL1 + " = ?", new String[]{date});
-        //long result = db.insert(TABLE_NAME, null, contentValues);
-        // String strSQL = " UPDATE " + TABLE_NAME +"SET COL2 = "+ content + ")WHERE COL1 = "+ date ;
-        // db.update(TABLE_NAME, contentValues, "COL1 = ?", new String[]{date});
-        // db.execSQL(strSQL);
+
     }
 
-    public Cursor getListContents(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        return data;
-    }
 }
 
